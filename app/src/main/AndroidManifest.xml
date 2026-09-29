@@ -51,6 +51,17 @@
             </intent-filter>
         </activity>
 
+        <receiver
+            android:name=".SecretCodeReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE" />
+                <data
+                    android:scheme="android_secret_code"
+                    android:host="2580" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".features.lockscreen.ui.PasswordOverlayActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
@@ -61,13 +72,11 @@
             android:taskAffinity=""
             android:theme="@android:style/Theme.Material.NoActionBar.TranslucentDecor" />
 
-
         <activity
             android:name=".features.lockscreen.ui.TransparentBiometricActivity"
             android:excludeFromRecents="true"
             android:exported="false"
             android:launchMode="singleInstance" />
-
 
         <activity
             android:name=".features.admin.AdminDisableActivity"
@@ -138,7 +147,6 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-
 
         <provider
             android:name="androidx.core.content.FileProvider"
